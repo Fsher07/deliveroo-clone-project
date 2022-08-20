@@ -21,17 +21,57 @@ const FeaturedRow = ({ id, title, description }) => (
     >
       {/* Restaurant Cards... */}
       <RestaurantCard
-         id={1}
-         imgUrl="https://links.papareact.com/wru"
-         title="Restaurant 1"
-         rating="4.5"
-         genre="Chinese"
-         address="123 Main St, New York, NY 10001"
-         short_description="This is a short description of the restaurant"
-         dishes="Chinese, American, Italian, Japanese"
-         long="-73.988, 40.741"
-         lat="40.741"
+        id={1}
+        imgUrl="https://thumbs.dreamstime.com/b/aperitivo-do-camar%C3%A3o-salm%C3%A3o-sushi-roll-futomaki-e-abacado-numa-placa-de-pedra-preta-206585049.jpg"
+        title="Restaurant 1"
+        rating="4.5"
+        genre="Chinese"
+        address="123 Main St, New York"
+        short_description="This is a short description of the restaurant"
+        dishes="Chinese, American, Italian, Japanese"
+        long="-73.988, 40.741"
+        lat="40.741"
       />
+
+      <RestaurantCard
+        id={1}
+        imgUrl="https://thumbs.dreamstime.com/b/aperitivo-do-camar%C3%A3o-salm%C3%A3o-sushi-roll-futomaki-e-abacado-numa-placa-de-pedra-preta-206585049.jpg"
+        title="Restaurant 1"
+        rating="4.5"
+        genre="Chinese"
+        address="123 Main St, New York"
+        short_description="This is a short description of the restaurant"
+        dishes="Chinese, American, Italian, Japanese"
+        long="-73.988, 40.741"
+        lat="40.741"
+      />
+
+      <RestaurantCard
+        id={1}
+        imgUrl="https://thumbs.dreamstime.com/b/aperitivo-do-camar%C3%A3o-salm%C3%A3o-sushi-roll-futomaki-e-abacado-numa-placa-de-pedra-preta-206585049.jpg"
+        title="Restaurant 1"
+        rating="4.5"
+        genre="Chinese"
+        address="123 Main St, New York"
+        short_description="This is a short description of the restaurant"
+        dishes="Chinese, American, Italian, Japanese"
+        long="-73.988, 40.741"
+        lat="40.741"
+      />
+
+      <RestaurantCard
+        id={1}
+        imgUrl="https://thumbs.dreamstime.com/b/aperitivo-do-camar%C3%A3o-salm%C3%A3o-sushi-roll-futomaki-e-abacado-numa-placa-de-pedra-preta-206585049.jpg"
+        title="Restaurant 1"
+        rating="4.5"
+        genre="Chinese"
+        address="123 Main St, New York"
+        short_description="This is a short description of the restaurant"
+        dishes="Chinese, American, Italian, Japanese"
+        long="-73.988, 40.741"
+        lat="40.741"
+      />
+
     </ScrollView>
   </View>
 );
