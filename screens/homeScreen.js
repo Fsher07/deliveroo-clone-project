@@ -1,4 +1,5 @@
-import React, { useLayoutEffect } from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
   View, Text, SafeAreaView, Image, TextInput, ScrollView,
@@ -12,9 +13,12 @@ import {
 import GlobalStyles from '../global-styles/GlobalStyles';
 import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
+import client from '../sanity';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+
+  const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -22,10 +26,23 @@ const HomeScreen = () => {
     });
   }, []);
 
+  useEffect(() => {
+    client.fetch(`
+    *[_type == 'featured'] {
+      ...,
+             restaurants[]->{
+               ...,
+               dished[]->
+              }
+             }`).then((data) => {
+      setFeaturedCategories(data);
+    });
+  }, []);
+
   return (
     <SafeAreaView style={GlobalStyles.AndroidSafeArea} className="pt-5 bg-white">
       {/* Header */}
-      <View className="flex-row items-center pb-3 mx-4 space-x-2">
+      <View className="flex-row items-center pb-5 mx-4 space-x-2">
         <Image
           source={{
             uri: 'https://images.prismic.io/dbhq-deliveroo-riders-website/ed825791-0ba4-452c-b2cb-b5381067aad3_RW_hk_kit_importance.png?auto=compress,format&rect=0,0,1753,1816&w=1400&h=1450',
@@ -60,25 +77,17 @@ const HomeScreen = () => {
         <Categories />
 
         {/* Featured Rows */}
-        <FeaturedRow
-          id="1"
-          title="Featured"
-          description="Paid placements from our partners"
-        />
 
-        {/* Tasty Discounts */}
-        <FeaturedRow
-          id="2"
-          title="Tasty Discounts"
-          description="Everyone's been enjoying these juicy discounts!"
-        />
-
-        {/* Offers near you */}
-        <FeaturedRow
-          id="3"
-          title="Offers near you!"
-          description="Why not support your local restaurant tonight!"
-        />
+        {featuredCategories.length > 0 ? (featuredCategories.map((featuredCategory) => (
+          <FeaturedRow
+            key={featuredCategory._id}
+            id={featuredCategory._id}
+            title={featuredCategory.name}
+            description={featuredCategory.short_description}
+          />
+        ))) : (
+          <Text>Loading...</Text>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
