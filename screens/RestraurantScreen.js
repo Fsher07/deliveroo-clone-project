@@ -1,17 +1,22 @@
+/* eslint-disable no-underscore-dangle */
 import {
   View, Text, ScrollView, Image, TouchableOpacity,
 } from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import {
   ArrowLeftIcon, StarIcon, LocationMarkerIcon, ChevronRightIcon,
 } from 'react-native-heroicons/solid';
 import { QuestionMarkCircleIcon } from 'react-native-heroicons/outline';
+import { useDispatch } from 'react-redux';
 import { urlFor } from '../sanity';
 import DishRow from '../components/DishRow';
+import BasketIcon from '../components/BasketIcon';
+import { setRestaurant } from '../features/restaurantSlice';
 
 const RestraurantScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const {
     params: {
@@ -28,12 +33,29 @@ const RestraurantScreen = () => {
     },
   } = useRoute();
 
+  useEffect(() => {
+    dispatch(setRestaurant({
+      id,
+      imgUrl,
+      title,
+      rating,
+      genre,
+      address,
+      short_description,
+      dishes,
+      long,
+      lat,
+    }));
+  }, []);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
     });
   }, []);
   return (
+    <>
+      <BasketIcon />
     <ScrollView>
       <View className="relative">
         <Image
@@ -72,17 +94,20 @@ const RestraurantScreen = () => {
         Menu
       </Text>
       {/* Dish Rows */}
-      {dishes.map((dish) => (
-        <DishRow
-          key={dish.id}
-          id={dish.id}
-          name={dish.name}
-          description={dish.short_description}
-          price={dish.price}
-          image={dish.image}
-        />
-      ))}
+      <View className="pb-36">
+        {dishes.map((dish) => (
+          <DishRow
+            key={dish._id}
+            id={dish._id}
+            name={dish.name}
+            description={dish.short_description}
+            price={dish.price}
+            image={dish.image}
+          />
+        ))}
+      </View>
     </ScrollView>
+    </>
   );
 };
 
