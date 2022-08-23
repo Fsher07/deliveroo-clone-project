@@ -1,8 +1,9 @@
 import {
-  View, Text, TouchableOpacity, Image,
+  Text, TouchableOpacity, Image,
 } from 'react-native';
 import React from 'react';
 
+// eslint-disable-next-line react/prop-types
 const CategoryCard = ({ imgUrl, title }) => (
   <TouchableOpacity className="realtive mr-2">
     <Image source={{ uri: imgUrl }} className="h-20 w-20 rounded" />

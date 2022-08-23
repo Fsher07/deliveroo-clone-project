@@ -44,6 +44,7 @@ const FeaturedRow = ({ id, title, description }) => {
         {/* Restaurant Cards... */}
         {restaurants?.map((restaurant, index) => (
           <RestaurantCard
+            // eslint-disable-next-line react/no-array-index-key
             key={index}
             id={restaurant._id}
             imgUrl={restaurant.image}
