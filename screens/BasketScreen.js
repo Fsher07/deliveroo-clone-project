@@ -1,6 +1,8 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'react-native'
-import React, { useMemo, useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import {
+  View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView,
+} from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import Currency from 'react-currency-formatter';
 import { XCircleIcon } from 'react-native-heroicons/solid';
@@ -54,7 +56,12 @@ const BasketScreen = () => {
         <ScrollView className="divide-y divide-gray-300">
           {Object.entries(groupedItemsInBasket).map(([key, items]) => (
             <View key={key} className="flex-row items-center space-x-4 px-4 py-3 bg-white ">
-              <Text className="text-gray-400">{items.length} x </Text>
+              <Text className="text-gray-400">
+                {items.length}
+                {' '}
+                x
+                {' '}
+              </Text>
               <Image source={{ uri: urlFor(items[0]?.image).url() }} className="h-12 w-12 bg-gray-300 p-4 rounded-full" />
               <Text className="flex-1">{items[0]?.name}</Text>
               <Text className="text-gray-600">

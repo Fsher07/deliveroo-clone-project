@@ -1,10 +1,9 @@
-import { View, Text } from 'react-native'
-import React, { useEffect } from 'react'
-import { SafeAreaView } from 'react-native'
-import * as Animatable from 'react-native-animatable'
-import * as Progress from 'react-native-progress'
-import { useNavigation } from '@react-navigation/native'
-import GlobalStyles from '../global-styles/GlobalStyles'
+import { SafeAreaView } from 'react-native';
+import React, { useEffect } from 'react';
+import * as Animatable from 'react-native-animatable';
+import * as Progress from 'react-native-progress';
+import { useNavigation } from '@react-navigation/native';
+import GlobalStyles from '../global-styles/GlobalStyles';
 
 const PreparingOrderScreen = () => {
   const navigation = useNavigation();
@@ -31,9 +30,9 @@ const PreparingOrderScreen = () => {
         Waiting for Restaurant to accept your order!
       </Animatable.Text>
 
-      <Progress.Circle size={80} indeterminate={true} color="white" />
+      <Progress.Circle size={80} indeterminate color="white" />
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export default PreparingOrderScreen;

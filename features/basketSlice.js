@@ -13,12 +13,12 @@ export const basketSlice = createSlice({
     },
     removeFromBasket: (state, action) => {
       const index = state.items.findIndex((item) => item.id === action.payload.id);
-      let newBasket = [...state.items];
+      const newBasket = [...state.items];
 
       if (index !== -1) {
         newBasket.splice(index, 1);
       } else {
-        console.log('Item not found in basket');
+        console.warn('Item not found in basket');
       }
 
       state.items = newBasket;

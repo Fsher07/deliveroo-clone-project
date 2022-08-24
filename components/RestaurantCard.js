@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable react/prop-types */
 import {
   View, Text, TouchableOpacity, Image,
 } from 'react-native';

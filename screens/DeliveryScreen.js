@@ -1,8 +1,10 @@
-import { View, Text, SafeAreaView, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import {
+  View, Text, SafeAreaView, TouchableOpacity, Image,
+} from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
-import * as Progress from 'react-native-progress'
+import * as Progress from 'react-native-progress';
 import { XIcon } from 'react-native-heroicons/solid';
 import MapView, { Marker } from 'react-native-maps';
 import { selectRestaurant } from '../features/restaurantSlice';
@@ -29,9 +31,12 @@ const DeliveryScreen = () => {
             </View>
             <Image source={{ uri: 'https://links.papareact.com/fls' }} className="h-20 w-20" />
           </View>
-          <Progress.Bar size={30} color="#00CCBB" indeterminate={true} />
+          <Progress.Bar size={30} color="#00CCBB" indeterminate />
           <Text className="text-gray-400 mt-2">
-            Your order at{restaurant.title} is being prepared
+            Your order at
+            {restaurant.title}
+            {' '}
+            is being prepared
           </Text>
         </View>
       </SafeAreaView>
@@ -43,7 +48,7 @@ const DeliveryScreen = () => {
           longitudeDelta: 0.005,
         }}
         className="flex-1 -mt-10 z-0"
-        mapType='mutedStandard'
+        mapType="mutedStandard"
       >
         <Marker
           coordinate={{
@@ -71,7 +76,7 @@ const DeliveryScreen = () => {
         <Text className="text-[#00CCBB] text-lg mr-5 font-bold">Call</Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default DeliveryScreen
+export default DeliveryScreen;
