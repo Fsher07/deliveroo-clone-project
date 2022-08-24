@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
+import { ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import CategoryCard from './CategoryCard';
 import client, { urlFor } from '../sanity';
@@ -13,8 +13,6 @@ const Categories = () => {
       });
   }, []);
 
-  console.log('kral:',categories);
-
   return (
     <ScrollView
       contentContainerStyle={{
@@ -27,6 +25,7 @@ const Categories = () => {
       {/* Category Card */}
       {categories.map((category) => (
         <CategoryCard
+          // eslint-disable-next-line no-underscore-dangle
           key={category._id}
           imgUrl={urlFor(category.image).width(200).url()}
           title={category.name}

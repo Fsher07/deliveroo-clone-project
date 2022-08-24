@@ -19,6 +19,7 @@ const HomeScreen = () => {
   const navigation = useNavigation();
 
   const [featuredCategories, setFeaturedCategories] = useState([]);
+  const [search, setSearch] = useState('');
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -66,6 +67,7 @@ const HomeScreen = () => {
           <TextInput
             placeholder="Restaurants and cuisines"
             keyboardType="default"
+            onChangeText={setSearch}
           />
         </View>
         <AdjustmentsIcon size={30} color="#00CCBB" />
@@ -84,6 +86,7 @@ const HomeScreen = () => {
             id={featuredCategory._id}
             title={featuredCategory.name}
             description={featuredCategory.short_description}
+            search={search}
           />
         ))) : (
           <Text>Loading...</Text>

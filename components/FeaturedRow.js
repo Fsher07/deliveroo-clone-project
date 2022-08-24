@@ -6,7 +6,9 @@ import { ArrowRightIcon } from 'react-native-heroicons/outline';
 import RestaurantCard from './RestaurantCard';
 import client from '../sanity';
 
-const FeaturedRow = ({ id, title, description }) => {
+const FeaturedRow = ({
+  id, title, description, search,
+}) => {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
@@ -42,7 +44,24 @@ const FeaturedRow = ({ id, title, description }) => {
         className="pt-4"
       >
         {/* Restaurant Cards... */}
-        {restaurants?.map((restaurant, index) => (
+        {/* if search is empty, show all restaurants, else show filtered restaurants */}
+        {search === '' ? restaurants.map((restaurant, index) => (
+          <RestaurantCard
+            key={index}
+            id={restaurant._id}
+            imgUrl={restaurant.image}
+            title={restaurant.name}
+            rating={restaurant.rating}
+            genre={restaurant.type?.name}
+            address={restaurant.address}
+            short_description={restaurant.short_description}
+            dishes={restaurant.dished}
+            long={restaurant.long}
+            lat={restaurant.lat}
+          />
+        )) : restaurants.filter((restaurant) => (
+          restaurant.name.toLowerCase().includes(search.toLowerCase())
+        )).map((restaurant, index) => (
           <RestaurantCard
             key={index}
             id={restaurant._id}
@@ -57,7 +76,6 @@ const FeaturedRow = ({ id, title, description }) => {
             lat={restaurant.lat}
           />
         ))}
-
       </ScrollView>
     </View>
   );
