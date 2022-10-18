@@ -12,6 +12,10 @@ I've created  a clone of Deliveroo(online food delivery app). Sanity is used as 
 - Tailwind CSS
 - Navigation
 
+## Video Presentation 
+
+[Deliveroo video link](https://drive.google.com/file/d/1nhzsz1gFOC4g9TNbzHa-Ob9CxqVKjZLT/view?usp=sharing)
+
 ## Sanity link
 
 [Sanity](https://deliverooclonesalim.sanity.studio/desk)
