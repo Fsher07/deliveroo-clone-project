@@ -2,6 +2,7 @@
 
 # Deliveroo Clone
 
+I've created  a clone of Deliveroo(online food delivery app). Sanity is used as backend to update and create for contents in app. Redux is implemented as state management tool. Navigation is used to transfer between screen and finally tailwind css is used for styling.
 
 ## Built With
 
